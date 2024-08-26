@@ -1,0 +1,177 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: #374151;
+  margin: 0;
+  overflow: hidden;
+  color: white;
+  font-size: 16px;
+  font-family: sans-serif, Arial, Helvetica;
+}
+
+#container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+/* Sidebar */
+
+#sidebar {
+  box-sizing: border-box;
+  padding-top: 2rem;
+  height: 100vh;
+  width: 20vw;
+  background-color: #1f2937;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+#logo {
+  font-size: 2rem;
+  padding-left: 4.5%;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-one {
+  height: 25%;
+}
+
+.nav-title {
+  align-self: flex-start;
+  padding-left: 4.5%;
+  padding-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+/* Top half sidebar */
+
+.nav-page {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  box-sizing: border-box;
+  padding-left: 2rem;
+}
+
+.nav-page > img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.open-page {
+  width: 75%;
+  height: 2.5rem;
+  text-align: left;
+}
+
+/* Bottom half sidebar */
+
+.nav-two {
+  height: 100%;
+}
+
+.projects-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project {
+  width: 100%;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-sizing: border-box;
+  padding-left: 2rem;
+}
+
+.project > img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.open-project {
+  width: 65%;
+  height: 2.5rem;
+  text-align: left;
+}
+
+.close-project {
+  width: 10%;
+  height: 2.5rem;
+  opacity: 0;
+}
+
+.close-project:hover {
+  opacity: 1;
+}
+
+.open-page,
+.project > button {
+  background-color: #1f2937;
+  color: white;
+  outline: 0;
+  border: 0;
+  font-size: 1.25rem;
+}
+
+.open-page:hover,
+.open-project:hover {
+  background-color: #374151;
+  border-radius: 8px;
+}
+
+/* Content */
+
+#content-container {
+  width: 80vw;
+  height: 100%;
+}
+
+#header {
+  width: 80vw;
+  height: 5vh;
+  display: flex;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding-right: 2rem;
+  padding-top: 1rem;
+}
+
+#header > button {
+  background-color: #374151;
+  color: white;
+  outline: 0;
+  border: 0;
+}
+
+#header > button:hover {
+  background-color: aliceblue;
+}
+
+#main {
+  height: 90vh;
+  width: 100%;
+}
+
+#footer {
+  height: 5vh;
+  width: 100%;
+  /* border-top: 1px solid #111827; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

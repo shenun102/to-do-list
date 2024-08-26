@@ -1,11 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="sidebar">
+        <div id="logo">Todolist</div>
+        <div class="navbar nav-one">
+          <div class="nav-title todolist">Overview</div>
+          <div class="nav-page">
+            <img src="./icons/all.svg" alt="All Page Icon" />
+            <button class="open-page">All</button>
+          </div>
+          <div class="nav-page">
+            <img
+              src="./icons/hourglass-svgrepo-com.svg"
+              alt="In Progress Page Icon"
+            />
+            <button class="open-page">In Progress</button>
+          </div>
+          <div class="nav-page">
+            <img src="./icons/today-svgrepo-com.svg" alt="Today Page Icon" />
+            <button class="open-page">Today</button>
+          </div>
+          <div class="nav-page">
+            <img
+              src="./icons/calendar-5-svgrepo-com.svg"
+              alt="Weekly Page Icon"
+            />
+            <button class="open-page">Weekly</button>
+          </div>
+        </div>
+
+        <div class="navbar nav-two">
+          <div class="nav-title projects">Projects</div>
+          <div class="projects-container">
+            <div class="project">
+              <img src="./icons/project.svg" alt="Project Page Icon" />
+              <button class="open-project">Project</button>
+              <button class="close-project">&times;</button>
+            </div>
+            <div class="project">
+              <img src="./icons/project.svg" alt="Project Page Icon" />
+              <button class="open-project">Project</button>
+              <button class="close-project">&times;</button>
+            </div>
+            <div class="project">
+              <img src="./icons/project.svg" alt="Project Page Icon" />
+              <button class="open-project">Project</button>
+              <button class="close-project">&times;</button>
+            </div>
+            <div class="project">
+              <img src="./icons/project.svg" alt="Project Page Icon" />
+              <button class="open-project">Project</button>
+              <button class="close-project">&times;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="content-container">
+        <header id="header">
+          <button>Clear</button>
+          <button>Reset</button>
+        </header>
+        <main id="main"></main>
+        <footer id="footer">Made by Shenun102</footer>
+      </div>
+    </div>
+  </body>
 </html>

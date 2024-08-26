@@ -1,7 +1,7 @@
 {
   "name": "project-template",
   "version": "1.0.0",
-  "description": "",
+  "description": "todolist",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -21,5 +21,8 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4",
     "webpack-merge": "^6.0.1"
+  },
+  "dependencies": {
+    "package.json": "^2.0.1"
   }
 }
