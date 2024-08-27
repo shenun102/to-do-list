@@ -1,8 +1,9 @@
 import "./styles.css";
-import "./allPage.css";
+import "./task.css";
 import createTask from "./create-task.js";
 import createTaskDOM from "./create-task-dom.js";
-import loadAllPage from "./allPage.js";
+import initAllPage from "./init-all-page.js";
+
 
 const task = createTask(
   "Task 1",
@@ -34,8 +35,11 @@ const task4 = createTask(
 );
 
 createTaskDOM(task);
+createTaskDOM(task2);
 
 const main = document.querySelector("#main");
 // loadAllPage();
+
+initAllPage();
 
 console.log("Hello");
