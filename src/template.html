@@ -71,5 +71,30 @@
         <footer id="footer">Made by Shenun102</footer>
       </div>
     </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-content-top">
+          <h2>New Task</h2>
+          <span class="close-modal">&times;</span>
+        </div>
+        <form id="taskForm">
+          <label for="taskName">Task Name:</label>
+          <input type="text" id="taskName" name="taskName" required />
+          <br /><br />
+          <label for="taskDescription">Description:</label>
+          <textarea
+            id="taskDescription"
+            name="taskDescription"
+            rows="4"
+            cols="50"
+          ></textarea>
+          <br /><br />
+          <input type="submit" value="Add Task" />
+        </form>
+      </div>
+    </div>
   </body>
 </html>

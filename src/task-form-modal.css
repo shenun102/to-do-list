@@ -1,0 +1,49 @@
+#modal {
+  position: fixed;
+  z-index: 100;
+  top: 5vh;
+  left: 7.5vw;
+  width: 85vw;
+  height: 90vh;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: gainsboro;
+  box-sizing: border-box;
+  padding: 10px 20px 20px 20px;
+  border: 1px solid #888;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  color: black;
+}
+
+.modal-content-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.close-modal {
+  color: #838181;
+  align-self: flex-start;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
