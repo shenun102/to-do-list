@@ -1,11 +1,9 @@
 export function openModal(event) {
-  event.preventDefault();
   modal.classList.add("show");
   toggleOverlay();
 }
 
 export function closeModal(event) {
-  event.preventDefault();
   modal.classList.remove("show");
   toggleOverlay();
 }

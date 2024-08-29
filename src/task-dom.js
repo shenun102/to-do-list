@@ -11,7 +11,7 @@ export default function createTaskDOM(task) {
 
   // Create buttons for buttons div
   const changeStatusBtn = newElement("button", ["change-status-btn"], "Status");
-  const editBtn = newElement("button", ["edit-btn"], "Edit");
+  const editBtn = newElement("button", ["edit-btn", "open-modal"], "Edit");
   const deleteBtn = newElement("button", ["delete-btn"], "Delete");
 
   // Add buttons to button container div

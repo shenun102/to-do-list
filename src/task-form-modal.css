@@ -116,6 +116,7 @@ h2 {
 }
 
 .submit,
+.edit,
 button.close-modal {
   width: 40%;
   height: 100%;
@@ -125,11 +126,13 @@ button.close-modal {
   font-weight: bold;
 }
 
-.submit {
+.submit,
+.edit {
   background-color: #9aec57;
 }
 
-.submit:hover {
+.submit:hover,
+.edit:hover {
   background-color: #74c050;
 }
 
