@@ -7,7 +7,7 @@ export default function createTaskDOM(task) {
   // create the title and buttons div
   const contentContainer = newElement("div", ["content-container"]);
   const titleDiv = newElement("div", ["task-title"], task.title);
-  const buttonsDiv = newElement("div", ["btn-container"]);
+  const taskBtnsDiv = newElement("div", ["task-btn-container"]);
 
   // Create buttons for buttons div
   const changeStatusBtn = newElement("button", ["change-status-btn"], "Status");
@@ -15,7 +15,7 @@ export default function createTaskDOM(task) {
   const deleteBtn = newElement("button", ["delete-btn"], "Delete");
 
   // Add buttons to button container div
-  buttonsDiv.append(changeStatusBtn, editBtn, deleteBtn);
+  taskBtnsDiv.append(changeStatusBtn, editBtn, deleteBtn);
 
   // create the due date div
   const dueDateDiv = document.createElement("div");
@@ -26,7 +26,7 @@ export default function createTaskDOM(task) {
   const descDiv = newElement("div", ["description"], task.desc);
 
   // Add all the divs
-  contentContainer.append(titleDiv, buttonsDiv);
+  contentContainer.append(titleDiv, taskBtnsDiv);
   taskContainer.append(contentContainer, dueDateDiv, descDiv);
 
   console.log(taskContainer);

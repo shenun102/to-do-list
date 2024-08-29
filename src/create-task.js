@@ -1,15 +1,10 @@
-class Task {
-  constructor(title, desc, dueDate, priority, status) {
+export default class Task {
+  constructor(project, title, dueDate, priority, status, desc) {
+    this.project = project;
     this.title = title;
-    this.desc = desc;
     this.dueDate = dueDate;
     this.priority = priority;
     this.status = status;
+    this.desc = desc;
   }
-}
-
-export default function createTask(title, desc, dueDate, priority, status) {
-  const task = new Task(title, desc, dueDate, priority, status);
-  console.log(task);
-  return task
 }

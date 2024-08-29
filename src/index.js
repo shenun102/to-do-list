@@ -1,33 +1,34 @@
 import "./styles.css";
 import "./task.css";
 import "./task-form-modal.css";
-import createTask from "./create-task.js";
-import createTaskDOM from "./create-task-dom.js";
+import Task from "./create-task.js";
+import createTaskDOM from "./task-dom.js";
+import { addNewTask } from "./add-project-or-task.js";
 import initAllPage from "./init-all-page.js";
 import { openModal, closeModal } from "./modal.js";
 
-const task = createTask(
+const task = new Task(
   "Task 1",
   "Nothing much here",
   "1990-22-10",
   "Urgrent",
   "In-progress"
 );
-const task2 = createTask(
+const task2 = new Task(
   "Task 1",
   "Nothing much here",
   "1990-22-10",
   "Urgrent",
   "In-progress"
 );
-const task3 = createTask(
+const task3 = new Task(
   "Task 1",
   "Nothing much here",
   "1990-22-10",
   "Urgrent",
   "In-progress"
 );
-const task4 = createTask(
+const task4 = new Task(
   "Task 1",
   "Nothing much here",
   "1990-22-10",
@@ -35,8 +36,8 @@ const task4 = createTask(
   "In-progress"
 );
 
-// createTaskDOM(task);
-// createTaskDOM(task2);
+createTaskDOM(task);
+createTaskDOM(task2);
 
 const main = document.querySelector("#main");
 // loadAllPage();
@@ -53,9 +54,11 @@ const closeModalBtns = document.querySelectorAll(".close-modal");
 closeModalBtns.forEach((element) =>
   element.addEventListener("click", closeModal)
 );
-console.log(closeModalBtns);
 
 openModalBtns.forEach((element) =>
   element.addEventListener("click", openModal)
 );
 
+const taskForm = document.querySelector("#taskForm");
+console.log(taskForm)
+taskForm.addEventListener("submit", addNewTask);

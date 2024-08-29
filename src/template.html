@@ -76,7 +76,7 @@
       </div>
     </div>
 
-    <div id="modal" class="modal show">
+    <div id="modal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
         <div class="modal-content-top">
@@ -84,12 +84,12 @@
           <span class="close-modal">&times;</span>
         </div>
 
-        <form id="taskForm">
+        <form id="taskForm" method="post" action="">
           <div class="modal-content-bot">
             <div class="input-row">
               <label for="project-list">Projects:</label>
               <select id="project-list" name="projects-list">
-                <option value="Low">Add to a project</option>
+                <option>Add to a project</option>
               </select>
             </div>
             <div class="input-row">
@@ -134,6 +134,6 @@
         </div>
       </div>
     </div>
-    <div class="overlay close-modal"></div>
+    <div class="overlay close-modal hide"></div>
   </body>
 </html>
