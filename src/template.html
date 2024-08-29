@@ -72,7 +72,6 @@
       </div>
     </div>
 
-    <!-- Modal -->
     <div id="modal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
@@ -80,20 +79,55 @@
           <h2>New Task</h2>
           <span class="close-modal">&times;</span>
         </div>
+    
         <form id="taskForm">
-          <label for="taskName">Task Name:</label>
-          <input type="text" id="taskName" name="taskName" required />
-          <br /><br />
-          <label for="taskDescription">Description:</label>
-          <textarea
-            id="taskDescription"
-            name="taskDescription"
-            rows="4"
-            cols="50"
-          ></textarea>
-          <br /><br />
-          <input type="submit" value="Add Task" />
+          <div class="modal-content-bot">
+            <div class="input-row">
+              <label for="project-list">Projects:</label>
+              <select id="project-list" name="projects-list">
+                <option value="Low">Add to a project</option>
+              </select>
+            </div>
+            <div class="input-row">
+              <label for="taskName">Task Name:</label>
+              <input
+                type="text"
+                id="taskName"
+                name="taskName"
+                required
+                placeholder="Enter task name."
+              />
+            </div>
+            <div class="input-row">
+              <label for="task-deadline">Deadline:</label>
+              <input type="date" name="task_deadline" id="task-deadline" />
+            </div>
+            <div class="input-row">
+              <label for="task-priority">Priority:</label>
+              <select id="task-priority" name="task_priority">
+                <option value="Low">Low</option>
+                <option value="Normal">Normal</option>
+                <option value="High">High</option>
+                <option value="Urgent">Urgent</option>
+              </select>
+            </div>
+            <div class="input-row desc-container">
+              <label for="taskDescription">Description:</label>
+              <textarea
+                id="taskDescription"
+                name="taskDescription"
+                rows="4"
+                cols="50"
+                placeholder="Enter task description..."
+              ></textarea>
+            </div>
+          </div>
         </form>
+    
+        <div class="btn-container">
+          <button type="submit" form="taskForm" class="submit">Add</button>
+          <button class="close-modal">Cancel</button>
+        </div>
       </div>
     </div>
   </body>

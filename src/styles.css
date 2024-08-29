@@ -56,7 +56,7 @@ body {
 /* Top half sidebar */
 
 .nav-page {
-  width: 100%;
+  width: 90%;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -91,7 +91,7 @@ body {
 }
 
 .project {
-  width: 100%;
+  width: 90%;
   height: 2.5rem;
   display: flex;
   align-items: center;
@@ -123,15 +123,16 @@ body {
 
 .open-page,
 .project > button {
-  background-color: #1f2937;
+  /* background-color: #1f2937; */
   color: white;
   outline: 0;
   border: 0;
   font-size: 1.25rem;
+  background-color: transparent;
 }
 
-.open-page:hover,
-.open-project:hover {
+.nav-page:hover,
+.project:hover {
   background-color: #374151;
   border-radius: 8px;
 }

@@ -1,48 +1,153 @@
 #modal {
   position: fixed;
   z-index: 100;
-  top: 5vh;
-  left: 7.5vw;
-  width: 85vw;
-  height: 90vh;
+  top: 15vh;
+  left: 35vw;
+  width: 30vw;
+  height: 70vh;
   overflow: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* display: none; */
+  background-color: #303136;
+  border-radius: 10px;
 }
 
 .modal-content {
-  background-color: gainsboro;
+  background-color: #5c6268;
   box-sizing: border-box;
   padding: 10px 20px 20px 20px;
   border: 1px solid #888;
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 95%;
   border-radius: 10px;
   color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .modal-content-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid white;
+  height: 10%;
+  width: 100%;
+}
+
+h2 {
+  color: white;
+}
+
+.modal-content > form {
+  height: 80%;
+  width: 100%;
+}
+
+.modal-content-bot {
+  height: 100%;
+  width: 100%;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+  font-weight: bold;
+}
+.input-row {
+  width: 100%;
+  height: 12.5%;
+  gap: 0.2rem;
+}
+
+.input-row > input,
+.input-row > textarea,
+.input-row > select {
+  border-radius: 4px;
+  outline: none;
+  border: 0;
+  font-family: sans-serif, Arial, Helvetica;
+  padding-left: 0.5rem;
+  box-sizing: border-box;
+}
+
+.input-row > input {
+  width: 90%;
+  height: 2rem;
+}
+
+.desc-container {
+  height: 25%;
+}
+
+.input-row > textarea {
+  max-width: 90%;
+  min-width: 90%;
+  min-height: 12.5%;
+}
+
+.input-row > select {
+  width: 91%;
+  height: 2rem;
+}
+
+.input-row > label {
+  width: 100%;
+  padding-left: 2.1rem;
+  text-align: left;
 }
 
 .input-row {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  align-items: center;
 }
 
-.close-modal {
+.btn-container {
+  width: 90%;
+  height: 7.5%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.submit,
+button.close-modal {
+  width: 40%;
+  height: 100%;
+  border-radius: 10px;
+  outline: 0;
+  border: 0;
+  font-weight: bold;
+}
+
+.submit {
+  background-color: #9aec57;
+}
+
+.submit:hover {
+  background-color: #74c050;
+}
+
+button.close-modal {
+  background-color: #ec5757;
+}
+
+button.close-modal:hover {
+  background-color: #c05050;
+}
+
+span.close-modal {
   color: #838181;
   align-self: flex-start;
   font-size: 28px;
   font-weight: bold;
 }
 
-.close-modal:hover,
-.close-modal:focus {
+span.close-modal:hover,
+span.close-modal:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
