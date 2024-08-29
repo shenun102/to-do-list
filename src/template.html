@@ -36,7 +36,10 @@
         </div>
 
         <div class="navbar nav-two">
-          <div class="nav-title projects">Projects</div>
+          <div class="nav-title projects">
+            <div class="title">Projects</div>
+            <img src="./icons/new.svg" alt="New Button" class="new-project" />
+          </div>
           <div class="projects-container">
             <div class="project">
               <img src="./icons/project.svg" alt="Project Page Icon" />
@@ -64,6 +67,7 @@
 
       <div id="content-container">
         <header id="header">
+          <button class="open-modal">New Task</button>
           <button>Clear</button>
           <button>Reset</button>
         </header>
@@ -72,14 +76,14 @@
       </div>
     </div>
 
-    <div id="modal" class="modal">
+    <div id="modal" class="modal show">
       <!-- Modal content -->
       <div class="modal-content">
         <div class="modal-content-top">
           <h2>New Task</h2>
           <span class="close-modal">&times;</span>
         </div>
-    
+
         <form id="taskForm">
           <div class="modal-content-bot">
             <div class="input-row">
@@ -123,12 +127,13 @@
             </div>
           </div>
         </form>
-    
+
         <div class="btn-container">
           <button type="submit" form="taskForm" class="submit">Add</button>
           <button class="close-modal">Cancel</button>
         </div>
       </div>
     </div>
+    <div class="overlay close-modal"></div>
   </body>
 </html>
