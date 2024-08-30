@@ -1,3 +1,5 @@
+import { closeModal } from "./modal";
+
 const editTaskModalHTML = `
           <button type="submit" form="taskForm" class="edit">Edit</button>
           <button class="close-modal">Cancel</button>
@@ -42,8 +44,10 @@ function submitEdit(target) {
   const priority = document.querySelector("#task-priority").value;
   const description = document.querySelector("#taskDescription").value;
 
-  // Grab the specific task container's title element
+  // Grab the specific task container's elements and replace with new values
   target.querySelector(".task-title").textContent = taskName;
   target.querySelector(".due-date").textContent = deadline;
   target.querySelector(".description").textContent = description;
+
+  closeModal();
 }

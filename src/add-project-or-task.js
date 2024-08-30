@@ -1,4 +1,5 @@
 import Task from "./create-task.js";
+import { closeModal } from "./modal.js";
 import createTaskDOM from "./task-dom.js";
 
 export function addNewTask(event) {
@@ -19,4 +20,5 @@ export function addNewTask(event) {
     description
   );
   createTaskDOM(newTask);
+  closeModal();
 }
