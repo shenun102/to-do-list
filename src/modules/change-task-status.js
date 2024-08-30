@@ -1,6 +1,6 @@
 import { allProjects } from "./initialize";
 
-export function deleteTask(target) {
+export function changeStatus(target) {
   // Find the container of the task
   const targetContainer = target.closest(".task-container");
   // Get the project title from the data attribute
@@ -17,19 +17,11 @@ export function deleteTask(target) {
     return;
   }
 
-  // Find the task index in the project
-  const taskIndex = project
-    .loadTask()
-    .findIndex((task) => task.title === taskTitle);
-
-  if (taskIndex === -1) {
-    console.error("Task not found in project");
-    return;
+  if (target.textContent === "In-progress") {
+    target.textContent = "Complete";
+    project.updateTaskStatus(taskTitle, "Complete");
+  } else {
+    target.textContent = "In-progress";
+    project.updateTaskStatus(taskTitle, "In-progress");
   }
-
-  // Remove the task from the project
-  project.delTask(taskTitle);
-
-  // Remove the task container from the DOM
-  targetContainer.remove();
 }
