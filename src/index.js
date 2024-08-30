@@ -146,10 +146,16 @@ createProjectDOM(testProject);
 // const taskForm = document.querySelector("#taskForm");
 // Now we can add an if section to listen in for add Project form
 document.body.addEventListener("submit", function (e) {
-  if (!e.target.id === "taskForm") return
-  e.preventDefault();
-  console.log(e.target);
-  addNewTask(e);
+  if (e.target.id === "taskForm") {
+    e.preventDefault();
+    console.log(e.target);
+    addNewTask(e);
+  }
+  if (e.target.id === "project-form") {
+    e.preventDefault();
+    console.log("Hiyayayayay");
+    addNewProject();
+  }
 });
 
 // Function for adding a new task
@@ -178,6 +184,14 @@ function addNewTask(event) {
   closeModal();
 }
 
+function addNewProject(event) {
+  // Get values from the form fields
+  const taskName = document.querySelector("#projectName").value;
+  const newProject = new Project(taskName, 33);
+  console.log(newProject);
+  createProjectDOM(newProject);
+}
+
 // Event listener for opening and closing the modal
 document.body.addEventListener("click", function (e) {
   // console.log(e.target);
@@ -197,7 +211,7 @@ document.body.addEventListener("click", function (e) {
 
 // Add Event listeners for deleting said task, ediing or changing status
 mainContainer.addEventListener("click", function (e) {
-  e.preventDefault()
+  e.preventDefault();
   console.log(e.target);
 
   if (e.target.classList.contains("change-status-btn")) changeStatus(e.target);
@@ -254,7 +268,7 @@ function setProjectHTML() {
           </div>
         </form>
         <div class="btn-container">
-          <button type="submit" form="taskForm" class="submit">Add</button>
+          <button type="submit" form="project-form" class="submit">Add</button>
           <button class="close-modal">Cancel</button>
         </div>
       </div>`;
@@ -330,3 +344,8 @@ function setTaskHTML() {
 
 // const newProjectBtn = document.querySelector(".new-project");
 // newProjectBtn.addEventListener("click", newProject);
+
+
+
+// Depending on which page it is, the currProject needs to be changed
+document.body.querySelector();
