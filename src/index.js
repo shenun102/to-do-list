@@ -8,11 +8,12 @@ import projIcon from "./icons/project.svg";
 
 // Import modules
 import { openModal, closeModal } from "./modules/modal";
-import deleteTask from "./modules/delete-task";
+
 // Create tasks class
 
 // Select the main container
 const mainContainer = document.querySelector("#main");
+let currProject;
 
 class Task {
   constructor(project, title, dueDate, priority, status, desc) {
@@ -40,31 +41,46 @@ class Project {
   loadTask() {
     return this.#tasks;
   }
+
+  // Method to change task status in project when btn clicked
+  updateTaskStatus(taskTitle, status) {
+    const task = this.#tasks.find((task) => task.title === taskTitle);
+    task.status = status;
+    console.log(task);
+  }
+
+  // Method to delete task
+  delTask(taskTitle) {
+    const taskIndex = this.#tasks.findIndex((task) => task.title === taskTitle);
+    console.log(taskIndex);
+    this.#tasks.splice(taskIndex, 1);
+    console.log(this);
+  }
 }
 
 // Creating instances of both classes
 const testProject = new Project("Test-project", 1);
 
-// const task = new Task(
-//   "Test-Project",
-//   "Task 1",
-//   "1990-22-10",
-//   "Urgent",
-//   "In-progress",
-//   "Something to say"
-// );
+const task = new Task(
+  "Test-Project",
+  "Task 1",
+  "1990-22-10",
+  "Urgent",
+  "In-progress",
+  "Something to say"
+);
 
-// const task2 = new Task(
-//   "Test-Project",
-//   "Task 2",
-//   "1990-23-10",
-//   "Urgent",
-//   "Complete",
-//   "Somethasdasdasdasdasding to say"
-// );
+const task2 = new Task(
+  "Test-Project",
+  "Task 2",
+  "1990-23-10",
+  "Urgent",
+  "Complete",
+  "Somethasdasdasdasdasding to say"
+);
 
-// testProject.addTask(task);
-// testProject.addTask(task2);
+testProject.addTask(task);
+testProject.addTask(task2);
 console.log(testProject);
 // console.log(task);
 
@@ -98,6 +114,7 @@ function loadProjectTasksDOM(project) {
   projectTasks.forEach((task) => (allTaskHTML += createTaskDOM(task)));
   // Add the html to the main container
   mainContainer.innerHTML = allTaskHTML;
+  currProject = project;
 }
 
 // Creates the html for a task and returns it
@@ -147,7 +164,7 @@ function addNewTask(event) {
     taskName,
     deadline,
     priority,
-    "In-Progress",
+    "In-progress",
     description
   );
 
@@ -165,7 +182,35 @@ document.body.addEventListener("click", function (e) {
   if (e.target.classList.contains("close-modal")) closeModal();
 });
 
-// Add Event listeners for deleting said task
+// Add Event listeners for deleting said task, ediing or changing status
 mainContainer.addEventListener("click", function (e) {
+  console.log(e.target);
+
+  if (e.target.classList.contains("change-status-btn")) changeStatus(e.target);
   if (e.target.classList.contains("delete-btn")) deleteTask(e.target);
+  // need to remove task from target project aswell
+
+  if (e.target.classList.contains("edit-btn")) console.log(e.target);
 });
+
+function changeStatus(target) {
+  const targetTask = target
+    .closest(".task-container")
+    .querySelector(".task-title").textContent;
+
+  if (target.textContent === "In-progress") {
+    target.textContent = "Complete";
+    currProject.updateTaskStatus(targetTask, "Complete");
+  } else {
+    target.textContent = "In-progress";
+    currProject.updateTaskStatus(targetTask, "In-progress");
+  }
+}
+
+function deleteTask(target) {
+  const targetContainer = target.closest(".task-container");
+  const targetTask = targetContainer.querySelector(".task-title").textContent;
+  console.log(targetTask);
+  currProject.delTask(targetTask);
+  targetContainer.remove();
+}
