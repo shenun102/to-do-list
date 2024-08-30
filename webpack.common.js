@@ -28,6 +28,14 @@ module.exports = {
         test: /\.html$/i,
         loader: "html-loader",
       },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/i,
+        loader: "url-loader",
+        options: {
+          limit: 8192,
+          name: "images/[name].[hash].[ext]",
+        },
+      },
     ],
   },
 };
