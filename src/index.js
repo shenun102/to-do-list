@@ -13,6 +13,7 @@ import { openModal, closeModal } from "./modules/modal";
 
 // Select the main container
 const mainContainer = document.querySelector("#main");
+const projectContainer = document.querySelector(".projects-container");
 const allProjects = [];
 let currProject;
 
@@ -61,7 +62,7 @@ class Project {
 
 // Creating instances of both classes
 const testProject = new Project("Test-project", 1);
-// allProjects.push(testProject)
+allProjects.push(testProject);
 
 const task = new Task(
   "Test-Project",
@@ -91,7 +92,7 @@ console.log(testProject);
 // Project
 
 function createProjectDOM(project) {
-  const projectContainer = document.querySelector(".projects-container");
+  // const projectContainer = document.querySelector(".projects-container");
   console.log(projectContainer);
   const projectHTML = `
   <div class="project">
@@ -356,12 +357,6 @@ function setTaskHTML() {
   console.log(modalContainer);
 }
 
-// const newProjectBtn = document.querySelector(".new-project");
-// newProjectBtn.addEventListener("click", newProject);
-
-// Depending on which page it is, the currProject needs to be changed
-// document.body.querySelector();
-
 // A function which dynamically generates the options for projects for html
 function projectOptions() {
   let projectOptionHTML = "";
@@ -371,3 +366,13 @@ function projectOptions() {
   });
   return projectOptionHTML;
 }
+
+projectContainer.addEventListener("click", function (e) {
+  if (e.target.classList.contains("open-project")) {
+    console.log(e.target.textContent)
+    const targetProject = allProjects.findIndex(project => project.title === e.target.textContent)
+    console.log(allProjects,targetProject)
+    // Load the corresponding project tasks
+    loadProjectTasksDOM(allProjects[targetProject])
+  }
+});
