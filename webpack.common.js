@@ -1,4 +1,3 @@
-// webpack.config.js
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -23,18 +22,13 @@ module.exports = {
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
         type: "asset/resource",
+        generator: {
+          filename: "icons/[name].[hash][ext]",
+        },
       },
       {
         test: /\.html$/i,
         loader: "html-loader",
-      },
-      {
-        test: /\.(png|jpg|jpeg|gif|svg)$/i,
-        loader: "url-loader",
-        options: {
-          limit: 8192,
-          name: "images/[name].[hash].[ext]",
-        },
       },
     ],
   },

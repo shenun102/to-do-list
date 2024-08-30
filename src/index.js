@@ -142,8 +142,11 @@ createProjectDOM(testProject);
 // Add new task
 // Event listeners
 // Select the form
-const taskForm = document.querySelector("#taskForm");
-taskForm.addEventListener("submit", function (e) {
+// Redundant, since the modal html is set dynamically,
+// const taskForm = document.querySelector("#taskForm");
+// Now we can add an if section to listen in for add Project form
+document.body.addEventListener("submit", function (e) {
+  if (!e.target.id === "taskForm") return
   e.preventDefault();
   console.log(e.target);
   addNewTask(e);
@@ -178,12 +181,23 @@ function addNewTask(event) {
 // Event listener for opening and closing the modal
 document.body.addEventListener("click", function (e) {
   // console.log(e.target);
-  if (e.target.classList.contains("open-modal")) openModal();
+  // Depending on whether its add task or project, change modal html
+  console.log(e.target.classList);
+
+  if (e.target.classList.contains("open-modal")) {
+    if (e.target.classList.contains("new-project")) {
+      setProjectHTML();
+    } else {
+      setTaskHTML();
+    }
+    openModal();
+  }
   if (e.target.classList.contains("close-modal")) closeModal();
 });
 
 // Add Event listeners for deleting said task, ediing or changing status
 mainContainer.addEventListener("click", function (e) {
+  e.preventDefault()
   console.log(e.target);
 
   if (e.target.classList.contains("change-status-btn")) changeStatus(e.target);
@@ -214,3 +228,105 @@ function deleteTask(target) {
   currProject.delTask(targetTask);
   targetContainer.remove();
 }
+
+// Add function to create new project and list it
+
+function setProjectHTML() {
+  const newProjectModalHTML = `
+  <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-content-top">
+          <h2>New Project</h2>
+          <span class="close-modal">&times;</span>
+        </div>
+        <form id="project-form" method="post" action="">
+          <div class="modal-content-bot">
+            <div class="input-row">
+              <label for="projectName">Project Name:</label>
+              <input
+                type="text"
+                id="projectName"
+                name="projectName"
+                required
+                placeholder="Enter project name."
+              />
+            </div>
+          </div>
+        </form>
+        <div class="btn-container">
+          <button type="submit" form="taskForm" class="submit">Add</button>
+          <button class="close-modal">Cancel</button>
+        </div>
+      </div>`;
+
+  const modalContainer = document.querySelector("#modal");
+  modalContainer.innerHTML = newProjectModalHTML;
+  console.log(modalContainer);
+}
+
+function setTaskHTML() {
+  const newTaskModalHTML = `
+  <div class="modal-content">
+  <div class="modal-content-top">
+    <h2>New Task</h2>
+    <span class="close-modal">&times;</span>
+  </div>
+
+  <form id="taskForm">
+    <div class="modal-content-bot">
+      <div class="input-row">
+        <label for="project-list">Projects:</label>
+        <select id="project-list" name="projects-list">
+          <option>Add to a project</option>
+        </select>
+      </div>
+      <div class="input-row">
+        <label for="taskName">Task Name:</label>
+        <input
+          type="text"
+          id="taskName"
+          name="taskName"
+          required
+          placeholder="Enter task name."
+        />
+      </div>
+      <div class="input-row">
+        <label for="task-deadline">Deadline:</label>
+        <input type="date" name="task_deadline" id="task-deadline" />
+      </div>
+      <div class="input-row">
+        <label for="task-priority">Priority:</label>
+        <select id="task-priority" name="task_priority">
+          <option value="Low">Low</option>
+          <option value="Normal">Normal</option>
+          <option value="High">High</option>
+          <option value="Urgent">Urgent</option>
+        </select>
+      </div>
+      <div class="input-row desc-container">
+        <label for="taskDescription">Description:</label>
+        <textarea
+          id="taskDescription"
+          name="taskDescription"
+          rows="4"
+          cols="50"
+          placeholder="Enter task description..."
+        ></textarea>
+      </div>
+    </div>
+  </form>
+
+  <div class="btn-container">
+    <button type="submit" form="taskForm" class="submit">Add</button>
+    <button class="close-modal">Cancel</button>
+  </div>
+</div>
+  `;
+
+  const modalContainer = document.querySelector("#modal");
+  modalContainer.innerHTML = newTaskModalHTML;
+  console.log(modalContainer);
+}
+
+// const newProjectBtn = document.querySelector(".new-project");
+// newProjectBtn.addEventListener("click", newProject);
