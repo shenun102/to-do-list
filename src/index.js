@@ -13,6 +13,7 @@ import { openModal, closeModal } from "./modules/modal";
 
 // Select the main container
 const mainContainer = document.querySelector("#main");
+const allProjects = [];
 let currProject;
 
 class Task {
@@ -60,6 +61,7 @@ class Project {
 
 // Creating instances of both classes
 const testProject = new Project("Test-project", 1);
+// allProjects.push(testProject)
 
 const task = new Task(
   "Test-Project",
@@ -162,14 +164,14 @@ document.body.addEventListener("submit", function (e) {
 function addNewTask(event) {
   event.preventDefault();
   // Get values from the form fields
-  const project = document.querySelector("#project-list").value;
+  const projectName = document.querySelector("#project-list").value;
   const taskName = document.querySelector("#taskName").value;
   const deadline = document.querySelector("#task-deadline").value;
   const priority = document.querySelector("#task-priority").value;
   const description = document.querySelector("#taskDescription").value;
   // Create new task with said values
   const newTask = new Task(
-    project,
+    projectName,
     taskName,
     deadline,
     priority,
@@ -177,26 +179,38 @@ function addNewTask(event) {
     description
   );
 
+  // Find the project in the projects Array
+  const targetProjectIndex = allProjects.findIndex(
+    (project) => project.title === projectName
+  );
+  // Switch to the target selected in the dropdown options
+  const targetProject = allProjects[targetProjectIndex];
   // Add the newly created task to the targeted project class
-  testProject.addTask(newTask);
+  targetProject.addTask(newTask);
   // Reload the DOM for the new task
-  loadProjectTasksDOM(testProject);
+  loadProjectTasksDOM(targetProject);
   closeModal();
 }
 
 function addNewProject(event) {
   // Get values from the form fields
   const taskName = document.querySelector("#projectName").value;
+  // Create new project instance
   const newProject = new Project(taskName, 33);
   console.log(newProject);
+  // Create the dom for said project
   createProjectDOM(newProject);
+  // Add new project instance to projects list
+  allProjects.push(newProject);
+  console.log(allProjects);
+  closeModal();
 }
 
 // Event listener for opening and closing the modal
 document.body.addEventListener("click", function (e) {
   // console.log(e.target);
   // Depending on whether its add task or project, change modal html
-  console.log(e.target.classList);
+  // console.log(e.target.classList);
 
   if (e.target.classList.contains("open-modal")) {
     if (e.target.classList.contains("new-project")) {
@@ -291,7 +305,7 @@ function setTaskHTML() {
       <div class="input-row">
         <label for="project-list">Projects:</label>
         <select id="project-list" name="projects-list">
-          <option>Add to a project</option>
+          <option>Add to a project</option>${projectOptions()}
         </select>
       </div>
       <div class="input-row">
@@ -345,7 +359,15 @@ function setTaskHTML() {
 // const newProjectBtn = document.querySelector(".new-project");
 // newProjectBtn.addEventListener("click", newProject);
 
-
-
 // Depending on which page it is, the currProject needs to be changed
-document.body.querySelector();
+// document.body.querySelector();
+
+// A function which dynamically generates the options for projects for html
+function projectOptions() {
+  let projectOptionHTML = "";
+  allProjects.forEach((project) => {
+    console.log(project.title);
+    projectOptionHTML += `<option value=${project.title}>${project.title}</option>`;
+  });
+  return projectOptionHTML;
+}
