@@ -9,5 +9,7 @@ TheOdinProject - Project: todolist
 - [x] Highlight pages that are being actively shown
 - [x] Display the corresponding tasks to today, weekly pages
 - [x] Add some indication towards completed tasks
+- [x] implement local storage
 - [ ] Change colour of task container depending on task urgency
 - [ ] style buttons more.
+

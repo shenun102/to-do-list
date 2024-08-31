@@ -1,11 +1,12 @@
 // delete-task.js
 import { allProjects } from "./initialize";
+import { saveProjectsToLocalStorage } from "./local-storage";
 
 export function deleteTask(target) {
   // Find the container of the task
   const targetContainer = target.closest(".task-container");
   // Check that it exists
-  if(!targetContainer) return
+  if (!targetContainer) return;
   // Get the project title from the data attribute
   const projectTitle = targetContainer.dataset.project;
   // Get the task title from the container
@@ -35,4 +36,5 @@ export function deleteTask(target) {
 
   // Remove the task container from the DOM
   targetContainer.remove();
+  saveProjectsToLocalStorage();
 }

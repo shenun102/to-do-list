@@ -26,8 +26,15 @@ import {
   loadTodayPage,
   loadWeeklyPage,
 } from "./load-pages/all-page";
-
+import { saveProjectsToLocalStorage, storageAvailable } from "./modules/local-storage";
 export let editTarget;
+
+// Test for storage
+if (storageAvailable("localStorage")) {
+  console.log("You can use it!");
+} else {
+  console.log("You can't use it!");
+}
 
 // Creating project and task DOMS
 
@@ -65,6 +72,8 @@ document.body.addEventListener("submit", function (e) {
     loadProjectTasksDOM(submitEdit(e, editTarget));
     // Close dom
     closeModal();
+    // Add to localStorage
+    saveProjectsToLocalStorage()
   }
 });
 

@@ -2,17 +2,18 @@
 
 import Project from "./project";
 import Task from "./task";
-import { createProjectDOM } from "./dom";
+import { createProjectDOM, createTaskDOM, loadProjectTasksDOM } from "./dom";
 
 export const mainContainer = document.querySelector("#main");
 export const projectContainer = document.querySelector(".projects-container");
 export const modalContainer = document.querySelector("#modal");
 export const allProjects = [];
+
 export let currProject;
 
 // Creating instances of both classes
-const testProject = new Project("Test-Project", 1);
-allProjects.push(testProject);
+// const testProject = new Project("Test-Project", 1);
+// allProjects.push(testProject);
 
 const task = new Task(
   "Test-Project",
@@ -50,13 +51,25 @@ const task4 = new Task(
   "Noooo"
 );
 
-testProject.addTask(task);
-testProject.addTask(task2);
-testProject.addTask(task3);
-testProject.addTask(task4);
-console.log(testProject);
+// testProject.addTask(task);
+// testProject.addTask(task2);
+// testProject.addTask(task3);
+// testProject.addTask(task4);
+// console.log(testProject);
 // console.log(task);
 
 export function initializePage() {
-  createProjectDOM(testProject);
+  // Load projects from localStorage if available
+  const storedProjects = localStorage.getItem("projects");
+  if (storedProjects) {
+    const parsedProjects = JSON.parse(storedProjects);
+    console.log(...parsedProjects);
+    allProjects.push(
+      ...parsedProjects.map((proj) => new Project(proj.title, "", proj.tasks))
+    );
+    console.log(allProjects);
+    allProjects.forEach((project) => {
+      createProjectDOM(project);
+    });
+  }
 }

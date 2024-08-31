@@ -1,31 +1,32 @@
 // project.js
 export default class Project {
-  #tasks = [];
-  constructor(title, id) {
+  tasks = [];
+  constructor(title, id, tasks = []) {
     this.title = title;
     this.id = id;
+    this.tasks.push(...tasks);
   }
 
   addTask(task) {
-    this.#tasks.push(task);
+    this.tasks.push(task);
   }
 
   loadTask() {
-    return this.#tasks;
+    return this.tasks;
   }
 
   // Method to change task status in project when btn clicked
   updateTaskStatus(taskTitle, status) {
-    const task = this.#tasks.find((task) => task.title === taskTitle);
+    const task = this.tasks.find((task) => task.title === taskTitle);
     task.status = status;
     console.log(task);
   }
 
   // Method to delete task
   delTask(taskTitle) {
-    const taskIndex = this.#tasks.findIndex((task) => task.title === taskTitle);
+    const taskIndex = this.tasks.findIndex((task) => task.title === taskTitle);
     console.log(taskIndex);
-    this.#tasks.splice(taskIndex, 1);
+    this.tasks.splice(taskIndex, 1);
     console.log(this);
   }
 }

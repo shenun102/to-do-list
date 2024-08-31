@@ -1,4 +1,5 @@
 import { allProjects } from "./initialize";
+import { saveProjectsToLocalStorage } from "./local-storage";
 
 export function changeStatus(target) {
   // Find the container of the task
@@ -28,7 +29,6 @@ export function changeStatus(target) {
     // Apply strikethrough to the task title and description
     taskTitleElement.style.textDecoration = "line-through";
     taskDescriptionElement.style.textDecoration = "line-through";
-
   } else {
     target.textContent = "In-progress";
     project.updateTaskStatus(taskTitle, "In-progress");
@@ -37,4 +37,5 @@ export function changeStatus(target) {
     taskTitleElement.style.textDecoration = "none";
     taskDescriptionElement.style.textDecoration = "none";
   }
+  saveProjectsToLocalStorage();
 }

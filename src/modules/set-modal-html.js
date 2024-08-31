@@ -117,7 +117,7 @@ function projectOptions() {
   let projectOptionHTML = "";
   allProjects.forEach((project) => {
     console.log(project.title);
-    projectOptionHTML += `<option value=${project.title}>${project.title}</option>`;
+    projectOptionHTML += `<option value="${project.title}">${project.title}</option>`;
   });
   return projectOptionHTML;
 }

@@ -3,6 +3,7 @@ import Task from "./task";
 import { allProjects } from "./initialize";
 import { loadProjectTasksDOM } from "./dom";
 import { closeModal } from "./modal";
+import { saveProjectsToLocalStorage } from "./local-storage";
 
 export function addNewTask(event) {
   event.preventDefault();
@@ -31,6 +32,7 @@ export function addNewTask(event) {
 
   // Switch to the target selected in the dropdown options
   const targetProject = allProjects[targetProjectIndex];
+  console.log(targetProject, projectName);
 
   // Check if the project they selected exists
   if (!targetProject) {
@@ -59,5 +61,7 @@ export function addNewTask(event) {
 
   // Reload the DOM for the new task
   loadProjectTasksDOM(targetProject);
+  console.log(allProjects, "Just before safing")
+  saveProjectsToLocalStorage()
   closeModal();
 }
