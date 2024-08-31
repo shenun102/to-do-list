@@ -1,5 +1,3 @@
-// change-task-status.js
-
 import { allProjects } from "./initialize";
 
 export function changeStatus(target) {
@@ -13,17 +11,30 @@ export function changeStatus(target) {
   // Find the project by project title
   const project = allProjects.find((project) => project.title === projectTitle);
 
-  // Error handling for if it doesnt exist
+  // Error handling for if it doesn't exist
   if (!project) {
     console.error("Project not found");
     return;
   }
 
+  // Get the task elements that should be strikethrough
+  const taskTitleElement = targetContainer.querySelector(".task-title");
+  const taskDescriptionElement = targetContainer.querySelector(".description");
+
   if (target.textContent === "In-progress") {
     target.textContent = "Complete";
     project.updateTaskStatus(taskTitle, "Complete");
+
+    // Apply strikethrough to the task title and description
+    taskTitleElement.style.textDecoration = "line-through";
+    taskDescriptionElement.style.textDecoration = "line-through";
+
   } else {
     target.textContent = "In-progress";
     project.updateTaskStatus(taskTitle, "In-progress");
+
+    // Remove strikethrough from the task title and description
+    taskTitleElement.style.textDecoration = "none";
+    taskDescriptionElement.style.textDecoration = "none";
   }
 }

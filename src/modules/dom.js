@@ -39,9 +39,9 @@ export function createTaskDOM(task) {
   const taskHTML = `
   <div class="task-container" data-project="${task.project}">
     <div class="content-container">
-      <div class="task-title">${task.title}</div>
+      <div ${strikeThrough(task)} class="task-title">${task.title}</div>
       <div class="due-date">${task.dueDate}</div>
-      <div class="description">${task.desc}</div>
+      <div ${strikeThrough(task)} class="description">${task.desc}</div>
     </div>
     <div class="task-btn-container">
         <div class="project-title">${task.project}</div>
@@ -52,4 +52,12 @@ export function createTaskDOM(task) {
   </div>`;
 
   return taskHTML;
+}
+
+function strikeThrough(task) {
+  if (task.status === "Complete")
+    return `style="text-decoration:line-through;"`;
+  else {
+    return;
+  }
 }
