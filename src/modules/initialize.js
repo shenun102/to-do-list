@@ -21,7 +21,7 @@ allProjects.push(testProject3);
 const task = new Task(
   "Test-Project",
   "Task 1",
-  "1990-22-10",
+  "2024-8-31",
   "Urgent",
   "In-progress",
   "Something to say"
@@ -30,14 +30,35 @@ const task = new Task(
 const task2 = new Task(
   "Test-Project",
   "Task 2",
-  "1990-23-10",
+  "2024-7-23",
   "Urgent",
   "Complete",
   "Somethasdasdasdasdasding to say"
 );
 
+const task3 = new Task (
+  "Test-Project",
+  "Task 3",
+  "2024-08-26",
+  "Urgent",
+  "In-progress",
+  "Noooo"
+)
+
+const task4 = new Task (
+  "Test-Project",
+  "Task 4",
+  "2024-08-21",
+  "Urgent",
+  "Complete",
+  "Noooo"
+)
+
+
 testProject.addTask(task);
 testProject.addTask(task2);
+testProject.addTask(task3);
+testProject.addTask(task4);
 testProject2.addTask(task);
 testProject2.addTask(task2);
 testProject3.addTask(task);
