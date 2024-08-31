@@ -1,3 +1,5 @@
+// modal.js
+
 export function openModal(event) {
   modal.classList.add("show");
   toggleOverlay();

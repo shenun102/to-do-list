@@ -1,3 +1,4 @@
+// delete-task.js
 import { allProjects } from "./initialize";
 
 export function deleteTask(target) {

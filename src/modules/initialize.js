@@ -6,6 +6,7 @@ import { createProjectDOM } from "./dom";
 
 export const mainContainer = document.querySelector("#main");
 export const projectContainer = document.querySelector(".projects-container");
+export const modalContainer = document.querySelector("#modal");
 export const allProjects = [];
 export let currProject;
 

@@ -19,6 +19,9 @@ import { setProjectHTML, setTaskHTML } from "./modules/set-modal-html";
 import { loadProjectTasksDOM } from "./modules/dom";
 import { deleteTask } from "./modules/delete-task";
 import { changeStatus } from "./modules/change-task-status";
+import { editTask, submitEdit } from "./modules/edit-task";
+
+export let editTarget;
 
 // Creating project and task DOMS
 
@@ -29,15 +32,18 @@ initializePage();
 // Event listeners
 // Submit new task or project
 document.body.addEventListener("submit", function (e) {
-  if (e.target.id === "taskForm") {
-    e.preventDefault();
-    console.log(e.target);
+  e.preventDefault();
+  if (e.target.matches("#taskForm")) {
     addNewTask(e);
   }
-  if (e.target.id === "project-form") {
-    e.preventDefault();
-    console.log("Hiyayayayay");
+  if (e.target.matches("#project-form")) {
     addNewProject();
+  }
+  if (e.target.matches("#edit-form")) {
+    // Reload dom
+    loadProjectTasksDOM(submitEdit(e, editTarget));
+    // Close dom
+    closeModal();
   }
 });
 
@@ -57,13 +63,12 @@ document.body.addEventListener("click", function (e) {
 // deleting said task, editing or changing status
 mainContainer.addEventListener("click", function (e) {
   e.preventDefault();
-  // console.log(e.target);
-
   if (e.target.classList.contains("change-status-btn")) changeStatus(e.target);
   if (e.target.classList.contains("delete-btn")) deleteTask(e.target);
-  // need to remove task from target project aswell
-
-  if (e.target.classList.contains("edit-btn")) console.log(e.target);
+  if (e.target.classList.contains("edit-btn")) {
+    editTask(e.target);
+    editTarget = e.target.closest(".task-container");
+  }
 });
 
 // Open project page

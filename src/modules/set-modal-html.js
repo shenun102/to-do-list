@@ -1,4 +1,6 @@
+// set-modal-html.js
 import { allProjects } from "./initialize";
+import { modalContainer } from "./initialize";
 
 export function setProjectHTML() {
   const newProjectModalHTML = `
@@ -28,7 +30,6 @@ export function setProjectHTML() {
         </div>
       </div>`;
 
-  const modalContainer = document.querySelector("#modal");
   modalContainer.innerHTML = newProjectModalHTML;
   console.log(modalContainer);
 }
@@ -91,8 +92,23 @@ export function setTaskHTML() {
   </div>
 </div>
   `;
-  const modalContainer = document.querySelector("#modal");
+
   modalContainer.innerHTML = newTaskModalHTML;
+  console.log(modalContainer);
+}
+
+export function setEditTaskHTML() {
+  setTaskHTML();
+  modalContainer.querySelector("#taskForm").id = "edit-form";
+  document.querySelector(".modal-content-top h2").textContent = "Edit Task";
+  const submitBtn = document.querySelector(".submit");
+  submitBtn.textContent = "Edit";
+  submitBtn.setAttribute("form", "edit-form");
+  const modalContentBot = document.querySelector(".modal-content-bot");
+  const firstDivChild = modalContentBot.querySelector("div");
+  if (firstDivChild) {
+    modalContentBot.removeChild(firstDivChild);
+  }
   console.log(modalContainer);
 }
 
