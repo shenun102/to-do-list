@@ -4,6 +4,8 @@ import { allProjects } from "./initialize";
 export function deleteTask(target) {
   // Find the container of the task
   const targetContainer = target.closest(".task-container");
+  // Check that it exists
+  if(!targetContainer) return
   // Get the project title from the data attribute
   const projectTitle = targetContainer.dataset.project;
   // Get the task title from the container

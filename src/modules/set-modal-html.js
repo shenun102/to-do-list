@@ -10,7 +10,7 @@ export function setProjectHTML() {
           <h2>New Project</h2>
           <span class="close-modal">&times;</span>
         </div>
-        <form id="project-form" method="post" action="">
+        <form id="project-form" method="post" action="" novalidate>
           <div class="modal-content-bot">
             <div class="input-row">
               <label for="projectName">Project Name:</label>
