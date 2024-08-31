@@ -20,6 +20,12 @@ import { loadProjectTasksDOM } from "./modules/dom";
 import { deleteTask } from "./modules/delete-task";
 import { changeStatus } from "./modules/change-task-status";
 import { editTask, submitEdit } from "./modules/edit-task";
+import {
+  loadAllPage,
+  loadInProgressPage,
+  loadTodayPage,
+  loadWeeklyPage,
+} from "./load-pages/all-page";
 
 export let editTarget;
 
@@ -30,6 +36,21 @@ initializePage();
 // Project
 
 // Event listeners
+// If sidebar pages are selected
+const navBarOne = document.querySelector(".nav-one");
+navBarOne.addEventListener("click", function (e) {
+  const targetPage = e.target.textContent;
+  if (targetPage === "All") {
+    loadAllPage();
+  } else if (targetPage === "In Progress") {
+    loadInProgressPage();
+  } else if (targetPage === "Today") {
+    loadTodayPage();
+  } else if (targetPage === "Weekly") {
+    loadWeeklyPage();
+  }
+});
+
 // Submit new task or project
 document.body.addEventListener("submit", function (e) {
   e.preventDefault();

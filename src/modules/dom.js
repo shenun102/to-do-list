@@ -1,5 +1,6 @@
 // dom.js
 import projIcon from "../icons/project.svg";
+import highlightPage from "./highlight-page";
 import { projectContainer, mainContainer, currProject } from "./initialize";
 
 export function createProjectDOM(project) {
@@ -18,18 +19,8 @@ export function createProjectDOM(project) {
 
 // Load all the tasks corresponding to that project.
 export function loadProjectTasksDOM(project) {
-
-  // Highlight the page loaded
-  // Select the corresponding sidebar page element
-  const element = document.querySelector(`[data-page="${project.title}"]`);
-  if (!element.classList.contains("selected")) {
-    // Remove all selected classes from all eelements
-    const pages = projectContainer.querySelectorAll(".project");
-    pages.forEach((page) => page.classList.remove("selected"));
-
-    // Add selected to the target page
-    element.classList.toggle("selected");
-  }
+  // highlight the target page
+  highlightPage(project);
 
   // Define variable that will contain all tasks html
   let allTaskHTML = "";
@@ -44,19 +35,20 @@ export function loadProjectTasksDOM(project) {
 }
 
 // Creates the html for a task and returns it
-function createTaskDOM(task) {
+export function createTaskDOM(task) {
   const taskHTML = `
   <div class="task-container" data-project="${task.project}">
     <div class="content-container">
       <div class="task-title">${task.title}</div>
-      <div class="task-btn-container">
+      <div class="due-date">${task.dueDate}</div>
+      <div class="description">${task.desc}</div>
+    </div>
+    <div class="task-btn-container">
+        <div class="project-title">${task.project}</div>
         <button class="change-status-btn">${task.status}</button>
         <button class="edit-btn">Edit</button>
         <button class="delete-btn">Delete</button>
       </div>
-    </div>
-    <div class="due-date">${task.dueDate}</div>
-    <div class="description">${task.desc}</div>
   </div>`;
 
   return taskHTML;
