@@ -72,15 +72,20 @@ mainContainer.addEventListener("click", function (e) {
 });
 
 // Open project page
+
 projectContainer.addEventListener("click", function (e) {
-  console.log(allProjects, currProject);
   if (e.target.classList.contains("open-project")) {
-    console.log(e.target.textContent);
-    const targetProject = allProjects.findIndex(
+    // Find the project directly
+    const targetProject = allProjects.find(
       (project) => project.title === e.target.textContent
     );
-    console.log(allProjects, targetProject);
-    // Load the corresponding project tasks
-    loadProjectTasksDOM(allProjects[targetProject]);
+
+    // Check if the project was found before attempting to use it
+    if (targetProject) {
+      // Load the corresponding project tasks
+      loadProjectTasksDOM(targetProject);
+    } else {
+      console.error("Project not found");
+    }
   }
 });

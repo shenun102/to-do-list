@@ -267,3 +267,8 @@ body {
     width: 100%;
   }
 }
+
+.selected {
+  background-color: #374151;
+  border-radius: 8px;
+}
