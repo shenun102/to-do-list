@@ -26,7 +26,10 @@ import {
   loadTodayPage,
   loadWeeklyPage,
 } from "./load-pages/all-page";
-import { saveProjectsToLocalStorage, storageAvailable } from "./modules/local-storage";
+import {
+  saveProjectsToLocalStorage,
+  storageAvailable,
+} from "./modules/local-storage";
 export let editTarget;
 
 // Test for storage
@@ -73,11 +76,11 @@ document.body.addEventListener("submit", function (e) {
     // Close dom
     closeModal();
     // Add to localStorage
-    saveProjectsToLocalStorage()
+    saveProjectsToLocalStorage();
   }
 });
 
-// opening and closing the modal
+// opening and closing the modal and clearing local storage
 document.body.addEventListener("click", function (e) {
   if (e.target.classList.contains("open-modal")) {
     if (e.target.classList.contains("new-project")) {
@@ -88,6 +91,12 @@ document.body.addEventListener("click", function (e) {
     openModal();
   }
   if (e.target.classList.contains("close-modal")) closeModal();
+  if (e.target.classList.contains("clear-storage")) {
+    const confirmation = prompt(
+      "Enter 'CONFIRM' to clear local storage. Please refresh the page after."
+    );
+    if (confirmation === "CONFIRM") localStorage.clear();
+  }
 });
 
 // deleting said task, editing or changing status
