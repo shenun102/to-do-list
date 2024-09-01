@@ -32,7 +32,6 @@ export function addNewTask(event) {
 
   // Switch to the target selected in the dropdown options
   const targetProject = allProjects[targetProjectIndex];
-  console.log(targetProject, projectName);
 
   // Check if the project they selected exists
   if (!targetProject) {
@@ -56,12 +55,12 @@ export function addNewTask(event) {
   }
 
   // Add the newly created task to the targeted project class
-  console.log(targetProject);
   targetProject.addTask(newTask);
 
   // Reload the DOM for the new task
   loadProjectTasksDOM(targetProject);
-  console.log(allProjects, "Just before safing")
+
+  // Save allProjects to localstorage
   saveProjectsToLocalStorage()
   closeModal();
 }

@@ -43,6 +43,5 @@ export function addNewProject(event) {
 
   // Save the updated projects list to localStorage
   saveProjectsToLocalStorage();
-  console.log(allProjects);
   closeModal();
 }

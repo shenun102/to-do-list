@@ -19,14 +19,11 @@ export default class Project {
   updateTaskStatus(taskTitle, status) {
     const task = this.tasks.find((task) => task.title === taskTitle);
     task.status = status;
-    console.log(task);
   }
 
   // Method to delete task
   delTask(taskTitle) {
     const taskIndex = this.tasks.findIndex((task) => task.title === taskTitle);
-    console.log(taskIndex);
     this.tasks.splice(taskIndex, 1);
-    console.log(this);
   }
 }

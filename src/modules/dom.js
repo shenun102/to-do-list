@@ -21,12 +21,10 @@ export function createProjectDOM(project) {
 export function loadProjectTasksDOM(project) {
   // highlight the target page
   highlightPage(project);
-  console.log(project);
   // Define variable that will contain all tasks html
   let allTaskHTML = "";
   // return the list of tasks associated with said project
   const projectTasks = project.loadTask();
-  console.log(projectTasks, "Loading this task");
 
   // For each task in the list, create the html for it and add it to the variable defined above
   projectTasks.forEach((task) => (allTaskHTML += createTaskDOM(task)));

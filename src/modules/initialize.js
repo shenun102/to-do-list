@@ -63,11 +63,9 @@ export function initializePage() {
   const storedProjects = localStorage.getItem("projects");
   if (storedProjects) {
     const parsedProjects = JSON.parse(storedProjects);
-    console.log(...parsedProjects);
     allProjects.push(
       ...parsedProjects.map((proj) => new Project(proj.title, "", proj.tasks))
     );
-    console.log(allProjects);
     allProjects.forEach((project) => {
       createProjectDOM(project);
     });

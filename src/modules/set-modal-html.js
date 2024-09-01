@@ -31,7 +31,6 @@ export function setProjectHTML() {
       </div>`;
 
   modalContainer.innerHTML = newProjectModalHTML;
-  console.log(modalContainer);
 }
 
 export function setTaskHTML() {
@@ -62,7 +61,7 @@ export function setTaskHTML() {
       </div>
       <div class="input-row">
         <label for="task-deadline">Deadline:</label>
-        <input type="date" name="task_deadline" id="task-deadline" />
+        <input type="date" name="task_deadline" id="task-deadline" required />
       </div>
       <div class="input-row">
         <label for="task-priority">Priority:</label>
@@ -93,7 +92,6 @@ export function setTaskHTML() {
   `;
 
   modalContainer.innerHTML = newTaskModalHTML;
-  console.log(modalContainer);
 }
 
 export function setEditTaskHTML() {
@@ -108,14 +106,12 @@ export function setEditTaskHTML() {
   if (firstDivChild) {
     modalContentBot.removeChild(firstDivChild);
   }
-  console.log(modalContainer);
 }
 
 // A function which dynamically generates the options for projects for html above
 function projectOptions() {
   let projectOptionHTML = "";
   allProjects.forEach((project) => {
-    console.log(project.title);
     projectOptionHTML += `<option value="${project.title}">${project.title}</option>`;
   });
   return projectOptionHTML;
