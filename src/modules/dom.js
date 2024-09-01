@@ -21,25 +21,28 @@ export function createProjectDOM(project) {
 export function loadProjectTasksDOM(project) {
   // highlight the target page
   highlightPage(project);
-  console.log(project)
+  console.log(project);
   // Define variable that will contain all tasks html
   let allTaskHTML = "";
   // return the list of tasks associated with said project
   const projectTasks = project.loadTask();
-  console.log(projectTasks,"Loading this task")
+  console.log(projectTasks, "Loading this task");
 
   // For each task in the list, create the html for it and add it to the variable defined above
   projectTasks.forEach((task) => (allTaskHTML += createTaskDOM(task)));
 
   // Add the html to the main container
   mainContainer.innerHTML = allTaskHTML;
-  
 }
 
 // Creates the html for a task and returns it
 export function createTaskDOM(task) {
   const taskHTML = `
-  <div class="task-container" data-project="${task.project}">
+  <div style="border:4px solid ${priorityColor(
+    task
+  )}; border-left: 1rem solid ${priorityColor(
+    task
+  )};" class="task-container" data-project="${task.project}">
     <div class="content-container">
       <div ${strikeThrough(task)} class="task-title">${task.title}</div>
       <div class="due-date">${task.dueDate}</div>
@@ -61,5 +64,16 @@ function strikeThrough(task) {
     return `style="text-decoration:line-through;"`;
   else {
     return;
+  }
+}
+
+function priorityColor(task) {
+  switch (task.priority) {
+    case "Low":
+      return "#5bc0de";
+    case "Medium":
+      return "#cca78a";
+    case "High":
+      return "#ff6b6b";
   }
 }

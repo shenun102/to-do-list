@@ -68,9 +68,8 @@ export function setTaskHTML() {
         <label for="task-priority">Priority:</label>
         <select id="task-priority" name="task_priority">
           <option value="Low">Low</option>
-          <option value="Normal">Normal</option>
+          <option value="Medium">Medium</option>
           <option value="High">High</option>
-          <option value="Urgent">Urgent</option>
         </select>
       </div>
       <div class="input-row desc-container">

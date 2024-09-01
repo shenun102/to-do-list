@@ -11,6 +11,6 @@ TheOdinProject - Project: todolist
 - [x] Add some indication towards completed tasks
 - [x] implement local storage
 - [x] added clear local storage button
-- [ ] Change colour of task container depending on task urgency
-- [ ] style buttons more.
+- [x] Change colour of task container depending on task urgency
+- [x] style buttons more.
 - [ ] add light mode
